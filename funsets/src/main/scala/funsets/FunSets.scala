@@ -56,7 +56,6 @@ object FunSets {
    */
     def forall(s: Set, p: Int => Boolean): Boolean = {
     def iter(a: Int): Boolean = {
-		println(s"$a")
 		if (a>bound) return true
       else if (s(a) && !p(a)) return false
       else return true && iter(a+1)
