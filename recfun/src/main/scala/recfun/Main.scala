@@ -44,7 +44,7 @@ object Main {
   /**
    * Exercise 3
    */
-//    def countChange(money: Int, coins: List[Int]): Int = {
+//    def stairsteps(money: Int, coins: List[Int]): Int = {
 //		println(s"money is $money, coins is $coins")
 //		var i:Int = 1
 //		var a = scala.collection.mutable.HashMap[Int, Int](0 ->1)
@@ -63,7 +63,7 @@ object Main {
 
 
 //	}
-//    def countChange(money: Int, coins: List[Int]): Int = {
+//    def distinct_pathlengths(money: Int, coins: List[Int]): Int = {
 //		println(s"money is $money, coins is $coins")
 //		var i:Int = 1
 //		var pathlengths = HashMap[Int, Set[Int]](0 -> Set(0))
