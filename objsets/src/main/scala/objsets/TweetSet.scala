@@ -46,9 +46,7 @@ abstract class TweetSet {
   /**
    * This is a helper method for `filter` that propagetes the accumulated tweets.
    */
-  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = {
-		
-  }
+  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
 
   /**
    * Returns a new `TweetSet` that is the union of `TweetSet`s `this` and `that`.
@@ -109,7 +107,7 @@ abstract class TweetSet {
 }
 
 class Empty extends TweetSet {
-    def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
+    override def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
   
   /**
    * The following methods are already implemented
@@ -126,7 +124,7 @@ class Empty extends TweetSet {
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
-    def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
+    override def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
   
     
   /**
