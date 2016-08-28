@@ -1,6 +1,31 @@
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
-[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.12:component from component compiler for Scala 2.10.6[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.12:component from component compiler for Scala 2.10.6[0m
+[0m[[0minfo[0m] [0m'compiler-interface' not yet compiled for Scala 2.10.6. Compiling...[0m
+[0m[[0mdebug[0m] [0mPlain interface to Scala compiler 2.10.6  with arguments: [0m
+[0m[[0mdebug[0m] [0m	-nowarn[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e627f0b7[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk/jre/classes:/home/soumya/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/soumya/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.12/xsbti/interface-0.13.12.jar:/tmp/sbt_9167a8b0/srcs/org.scala-sbt/compiler-interface/compiler-interface-0.13.12-sources.jar:/home/soumya/.sbt/boot/scala-2.10.6/lib/scala-compiler.jar:/home/soumya/.sbt/boot/scala-2.10.6/lib/jline.jar:/home/soumya/.sbt/boot/scala-2.10.6/lib/scala-reflect.jar:/home/soumya/.sbt/boot/scala-2.10.6/lib/jansi.jar[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/API.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Analyzer.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Command.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Compat.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/CompilerInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/ConsoleInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/DelegatingReporter.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Dependency.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/ExtractAPI.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/ExtractUsedNames.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/GlobalHelpers.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/LocateClassFile.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Log.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/Message.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7cedd6fb/xsbt/ScaladocInterface.scala[0m
+[0m[[0minfo[0m] [0m  Compilation completed in 8.107 s[0m
 [0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.12:component from component compiler for Scala 2.10.6[0m
 [0m[[0minfo[0m] [0mStarting scala interpreter...[0m
 [0m[[0minfo[0m] [0m[0m

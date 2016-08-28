@@ -3,3 +3,7 @@ pwd
 cd ./example
 cd example
 exit
+pwd
+ls
+console
+exit
