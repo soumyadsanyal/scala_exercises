@@ -6,6 +6,7 @@ import common._
  * Assignment 4: Huffman coding
  *
  */
+
 object Huffman {
 
   /**
@@ -101,12 +102,36 @@ object Huffman {
    * head of the list should have the smallest weight), where the weight
    * of a leaf is the frequency of the character.
    */
-    def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] = ???
+
+    def makeOrderedLeafListHelper(l:List[(Int, Char)]):List[(Int, Char)] = {
+        l match {
+            case List() => List[(Int, Char)]()
+            case (head::tail) => {
+        val best = (head::tail).min
+        val rest = (head::tail).filter((p:(Int, Char)) => p!=best)
+        best :: makeOrderedLeafListHelper(rest)
+            }
+
+
+    }
+    }
+
+
+    def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] = {
+        val flipped = freqs.map((p:(Char, Int)) => (p._2, p._1))
+        val ordered = this.makeOrderedLeafListHelper(flipped)
+        ordered.map((p:(Int, Char)) => Leaf(p._2, p._1))
+
+    }
+
   
   /**
    * Checks whether the list `trees` contains only one single code tree.
    */
-    def singleton(trees: List[CodeTree]): Boolean = ???
+    def singleton(trees: List[CodeTree]): Boolean = {
+        trees.length == 1
+    }
+
   
   /**
    * The parameter `trees` of this function is a list of code trees ordered
