@@ -19,7 +19,9 @@ object Huffman {
    * present in the leaves below it. The weight of a `Fork` node is the sum of the weights of these
    * leaves.
    */
-    abstract class CodeTree
+    abstract class CodeTree {
+        val weight : Int
+    }
   case class Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) extends CodeTree
   case class Leaf(char: Char, weight: Int) extends CodeTree
   
@@ -28,14 +30,14 @@ object Huffman {
     def weight(tree: CodeTree): Int = {
         tree match {
             case Leaf(c, w) => w
-            case Fork(l, r, c, w) => w + this.weight(l) + this.weight(r)
+            case Fork(l, r, c, w) => this.weight(l) + this.weight(r)
         }
     }
 
   
     def chars(tree: CodeTree): List[Char] = {
         tree match {
-            case Fork(l, r, c, w) => c ++ this.chars(l) ++ this.chars(r)
+            case Fork(l, r, c, w) => this.chars(l) ++ this.chars(r)
             case Leaf(c, w) => List[Char](c)
         }
     }
@@ -145,7 +147,21 @@ object Huffman {
    * If `trees` is a list of less than two elements, that list should be returned
    * unchanged.
    */
-    def combine(trees: List[CodeTree]): List[CodeTree] = ???
+    def combine(trees: List[CodeTree]): List[CodeTree] = {
+        if (!singleton(trees)) {
+            val temp = this.makeCodeTree(trees(0), trees(1))
+            val rest = trees.drop(2)
+            val before = rest.filter((t:CodeTree) => t.weight<=temp.weight)
+            val after = rest.filter((t:CodeTree) => t.weight>temp.weight)
+            before ++ List[CodeTree](temp) ++ after
+        }
+        else{
+            trees
+        }
+    }
+
+
+            
   
   /**
    * This function will be called in the following way:
@@ -164,7 +180,15 @@ object Huffman {
    *    the example invocation. Also define the return type of the `until` function.
    *  - try to find sensible parameter names for `xxx`, `yyy` and `zzz`.
    */
-    def until(xxx: ???, yyy: ???)(zzz: ???): ??? = ???
+  def until(condition: List[CodeTree] => Boolean, transformation: List[CodeTree] => List[CodeTree] )(trees: List[CodeTree]): CodeTree = {
+      if (!condition(trees)) {
+          this.until(condition, transformation) (transformation(trees))
+      }
+      else{
+          trees(0)
+      }
+  }
+
   
   /**
    * This function creates a code tree which is optimal to encode the text `chars`.
@@ -172,7 +196,10 @@ object Huffman {
    * The parameter `chars` is an arbitrary text. This function extracts the character
    * frequencies from that text and creates a code tree based on them.
    */
-    def createCodeTree(chars: List[Char]): CodeTree = ???
+    def createCodeTree(chars: List[Char]): CodeTree = {
+        this.until(this.singleton, this.combine)(this.makeOrderedLeafList(this.times(chars)))
+    }
+
   
 
   // Part 3: Decoding
