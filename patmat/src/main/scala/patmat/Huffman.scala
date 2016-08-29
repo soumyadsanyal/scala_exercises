@@ -200,8 +200,6 @@ object Huffman {
         this.until(this.singleton, this.combine)(this.makeOrderedLeafList(this.times(chars)))
     }
 
-  
-
   // Part 3: Decoding
 
   type Bit = Int
