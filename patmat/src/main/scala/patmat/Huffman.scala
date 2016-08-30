@@ -21,9 +21,12 @@ object Huffman {
    */
     abstract class CodeTree {
         val weight : Int
+        val chars : List[Char] 
     }
-  case class Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) extends CodeTree
-  case class Leaf(char: Char, weight: Int) extends CodeTree
+  case class Fork(val left: CodeTree, val right: CodeTree, val chars: List[Char], val weight: Int) extends CodeTree
+  case class Leaf(val char: Char, val weight: Int) extends CodeTree {
+      val chars = List[Char](char)
+  }
   
 
   // Part 1: Basics
@@ -208,7 +211,28 @@ object Huffman {
    * This function decodes the bit sequence `bits` using the code tree `tree` and returns
    * the resulting list of characters.
    */
-    def decode(tree: CodeTree, bits: List[Bit]): List[Char] = ???
+
+    def decodeHelper(completeTree:CodeTree, currentTree:CodeTree, bits:List[Bit]):List[Char] = {
+        (currentTree, bits) match {
+
+            case (Leaf(chars, weight), List()) => List[Char](chars)
+            case (Fork(l, r, c, w), List()) => c
+            case (Leaf(chars, weight), l) => chars::this.decodeHelper(completeTree, completeTree, l)
+            case (Fork(left, right, chars, weight), (head::tail)) => {
+                if (head==0) this.decodeHelper(completeTree, left, tail)
+                else this.decodeHelper(completeTree, right, tail)
+            }
+            
+        }
+
+    }
+
+    def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
+        val currentTree = tree
+        decodeHelper(tree, currentTree, bits)
+    }
+
+
   
   /**
    * A Huffman coding tree for the French language.
@@ -226,7 +250,7 @@ object Huffman {
   /**
    * Write a function that returns the decoded secret
    */
-    def decodedSecret: List[Char] = ???
+    def decodedSecret: List[Char] = this.decode(this.frenchCode, this.secret)
   
 
   // Part 4a: Encoding using Huffman tree
@@ -235,7 +259,28 @@ object Huffman {
    * This function encodes `text` using the code tree `tree`
    * into a sequence of bits.
    */
-    def encode(tree: CodeTree)(text: List[Char]): List[Bit] = ???
+
+    def encodeHelper(tree:CodeTree, a:Char, result:List[Bit]):List[Bit] = {
+        (tree, a, result) match {
+            case (Fork(l, r, c, w), a, result) => if (l.chars.contains(a)) this.encodeHelper(l, a, result++List[Bit](0)) else this.encodeHelper(r, a, result++List[Bit](1))
+//            {
+//                l match {
+//                    case Fork(ll, rr, c, w) => if (c.contains(a)) this.encodeHelper(l, a, result++List[Bit](0))
+//                    case Leaf(c, w) => if (c==a) this.encodeHelper(l, a, result++List[Bit](0))
+//                }
+//                r match {
+//                    case Fork(ll, rr, c, w) => if (c.contains(a)) this.encodeHelper(r, a, result++List[Bit](1))
+//                    case Leaf(c, w) => if (c==a) this.encodeHelper(r, a, result++List[Bit](1))
+//                }
+//            }
+            case (Leaf(c,w), a, result) => result
+        }
+    }
+
+                
+                
+                
+    def encode(tree: CodeTree)(text: List[Char]): List[Bit] = text.map((c:Char) => this.encodeHelper(tree, c, List[Bit]())).flatten
   
   // Part 4b: Encoding using code table
 
