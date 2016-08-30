@@ -16,7 +16,7 @@
 [0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/soumya/code/scala/scala_exercises/patmat/target/scala-2.11/classes...[0m
 [0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
 [0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler 3ca999e6, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 40fbc5b1, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
 [0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
 [0m[[0mdebug[0m] [0m	-deprecation[0m
 [0m[[0mdebug[0m] [0m	-bootclasspath[0m
@@ -31,8 +31,12 @@
 [0m[[33mwarn[0m] [0mIt would fail on the following input: (_, _, _)[0m
 [0m[[33mwarn[0m] [0m        (tree, a, result) match {[0m
 [0m[[33mwarn[0m] [0m        ^[0m
-[0m[[33mwarn[0m] [0mtwo warnings found[0m
-[0m[[0mdebug[0m] [0mScala compilation took 2.578618622 s[0m
+[0m[[33mwarn[0m] [0m/home/soumya/code/scala/scala_exercises/patmat/src/main/scala/patmat/Huffman.scala:308: match may not be exhaustive.[0m
+[0m[[33mwarn[0m] [0mIt would fail on the following input: (_, _)[0m
+[0m[[33mwarn[0m] [0m        (tree, result) match {[0m
+[0m[[33mwarn[0m] [0m        ^[0m
+[0m[[33mwarn[0m] [0mthree warnings found[0m
+[0m[[0mdebug[0m] [0mScala compilation took 1.898327276 s[0m
 [0m[[0mdebug[0m] [0mNew invalidations:[0m
 [0m[[0mdebug[0m] [0m	Set()[0m
 [0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
