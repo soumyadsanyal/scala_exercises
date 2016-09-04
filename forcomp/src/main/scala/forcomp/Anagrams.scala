@@ -83,6 +83,8 @@ object Anagrams {
    */
   def combinations(occurrences: Occurrences): List[Occurrences] = ???
 
+//  val d = a.map((p:(Char, Int)) => a.map((q:(Char, Int)) => decrement(q,p._1)))
+
   /** Subtracts occurrence list `y` from occurrence list `x`.
    *
    *  The precondition is that the occurrence list `y` is a subset of
