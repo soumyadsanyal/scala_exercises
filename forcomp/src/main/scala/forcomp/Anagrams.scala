@@ -83,9 +83,19 @@ object Anagrams {
    */
   def combinations(occurrences: Occurrences): List[Occurrences] = ???
 
-//  val a = forcomp.Anagrams.sentenceOccurrences(List("soumya", "sanyal"))
-// def decrement(p:(Char, Int), k:Char) = if (k==p._1) (p._1, p._2-1) else p
-//  val d = a.map((p:(Char, Int)) => a.map((q:(Char, Int)) => decrement(q,p._1)))
+/*  val a = List(forcomp.Anagrams.sentenceOccurrences(List("abc", "bc", "c")))
+* 
+ * def decrement(p:(Char, Int), k:Char) = if (k==p._1) (p._1, if (p._2-1 > 0) (p._2-1) else 0) else p
+*  val d = a.map((p:(Char, Int)) => a.map((q:(Char, Int)) => decrement(q,p._1)))
+*
+*def iterate(l:List[(Char, Int)]) = {
+*       l.map((p:(Char, Int)) => l.map((q:(Char, Int)) => decrement(q, p._1)))
+*            }
+* def process(l: List[List[(Char, Int)]]) = {
+       l.map(p => iterate(p)).flatten.distinct
+            }
+*
+*/
 
   /** Subtracts occurrence list `y` from occurrence list `x`.
    *
