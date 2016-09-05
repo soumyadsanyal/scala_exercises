@@ -81,7 +81,32 @@ object Anagrams {
    *  Note that the order of the occurrence list subsets does not matter -- the subsets
    *  in the example above could have been displayed in some other order.
    */
-  def combinations(occurrences: Occurrences): List[Occurrences] = ???
+
+    val l1 = List(List[(Char, Int)]())
+    val l2 = this.extend(('a',2))
+
+    def extend(p:(Char, Int)) = {
+        List.range(1, p._2+1).map((i:Int) => (p._1, i))
+    }
+
+  def step(l1:List[List[(Char, Int)]], l2:List[(Char, Int)]) = {
+        l1 ++ l2.map((p:(Char, Int)) => {
+            l1.map((t:List[(Char, Int)]) => {
+                t ++ List(p)//::t
+            }
+            )
+
+        }
+        ).flatten
+
+
+  }
+
+
+  def combinations(occurrences: Occurrences): List[Occurrences] = {
+      occurrences.foldLeft(List(List[(Char, Int)]())){(l1, l2) => this.step(l1, this.extend(l2))}
+
+  }
 
 /*  val a = List(forcomp.Anagrams.sentenceOccurrences(List("abc", "bc", "c")))
 * 
