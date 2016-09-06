@@ -82,9 +82,6 @@ object Anagrams {
    *  in the example above could have been displayed in some other order.
    */
 
-    val l1 = List(List[(Char, Int)]())
-    val l2 = this.extend(('a',2))
-
     def extend(p:(Char, Int)) = {
         List.range(1, p._2+1).map((i:Int) => (p._1, i))
     }
@@ -95,17 +92,13 @@ object Anagrams {
                 t ++ List(p)//::t
             }
             )
-
         }
         ).flatten
-
-
   }
 
 
   def combinations(occurrences: Occurrences): List[Occurrences] = {
       occurrences.foldLeft(List(List[(Char, Int)]())){(l1, l2) => this.step(l1, this.extend(l2))}
-
   }
 
   /** Subtracts occurrence list `y` from occurrence list `x`.
@@ -118,7 +111,25 @@ object Anagrams {
    *  Note: the resulting value is an occurrence - meaning it is sorted
    *  and has no zero-entries.
    */
-  def subtract(x: Occurrences, y: Occurrences): Occurrences = ???
+  def subtract(x: Occurrences, y: Occurrences): Occurrences = {
+    (x, y) match {
+        case (first, List()) => first
+        case (List(),_) => List() // this case will never arise
+        case ((a::as), (b::bs)) => {
+            if (a._1 == b._1) {
+                if (a._2 > b._2) {(List((a._1, (a._2-b._2))):Occurrences) ++ (this.subtract(as, bs))} else this.subtract(as, bs)
+            }
+            else {
+                a::(this.subtract(as, (b::bs)))
+            }
+        }
+
+    }
+
+  }
+
+
+
 
   /** Returns a list of all anagram sentences of the given sentence.
    *
