@@ -170,5 +170,30 @@ object Anagrams {
    *  so it has to be returned in this list.
    *  Note: There is only one anagram of an empty sentence.
    */
-  def sentenceAnagrams(sentence: Sentence): List[Sentence] = ???
+
+  def PP(node:Occurrences, branch: Occurrences): List[Occurrences] = {
+    val difference = this.subtract(node, branch)
+    if (difference == List()) return List(branch)
+    else if (this.combinations(difference).filter(o => this.dictionary.contains(o)) == List()) {
+      return List()
+    }
+    else return this.P(difference)
+  }
+
+  def P(node:Occurrences): List[Occurrences] = {
+    var result = List[Occurrences]()
+    for (c <- this.combinations(node).filter(o => this.dictionary.contains(o))) {
+      res = res ++ this.PP(node, c)
+    }
+    return res
+  }
+
+ def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
+   val occ = this.sentenceOccurrences(sentence)
+   return this.P(occ)
+ }
+
+
+
+
 }
