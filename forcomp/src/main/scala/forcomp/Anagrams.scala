@@ -183,9 +183,9 @@ object Anagrams {
   def P(node:Occurrences): List[Occurrences] = {
     var result = List[Occurrences]()
     for (c <- this.combinations(node).filter(o => this.dictionary.contains(o))) {
-      res = res ++ this.PP(node, c)
+      result = result ++ this.PP(node, c)
     }
-    return res
+    return result
   }
 
  def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
